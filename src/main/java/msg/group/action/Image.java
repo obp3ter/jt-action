@@ -25,4 +25,5 @@ public class Image implements Serializable {
         this.name = name;
         this.path = path;
     }
+    public Image(){}
 }
