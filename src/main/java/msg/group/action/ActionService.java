@@ -7,26 +7,29 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@RestController("/action")
+@RestController
 public class ActionService {
 
-    @PostMapping
-    private void action(@NotNull @RequestParam List<Image> uris,
-                        @NotNull @RequestParam String action
+    @PostMapping("/action")
+    private String action(@RequestBody Request request
     )
     {
-
+        List<Image> uris=request.getUris();
+        String action = request.getAction();
         uris.forEach(s-> System.out.println(s.getPath()));
-
+        System.out.println(action);
+        return "OK";
     }
-    @GetMapping
-    private List<Image> getimg()
+    @GetMapping("/action")
+    private Request getr()
     {
         ArrayList<Image> list = new ArrayList<>();
         list.add(new Image("a","aa"));
         list.add(new Image("a","aa"));
-        return list;
+        Request r = new Request();
+        r.setUris(list);
+        r.setAction("create");
+        return r;
     }
 
     private void create(){}
