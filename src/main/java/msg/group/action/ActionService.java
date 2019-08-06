@@ -12,12 +12,12 @@ import java.util.List;
 public class ActionService {
 
     @PostMapping
-    private void action(@NotNull @RequestParam Image uris
-                        //@NotNull @RequestParam String action
+    private void action(@NotNull @RequestParam List<Image> uris,
+                        @NotNull @RequestParam String action
     )
     {
-        System.out.println(uris.getPath());
-        //uris.forEach(s-> System.out.println(s.getPath()));
+
+        uris.forEach(s-> System.out.println(s.getPath()));
 
     }
     @GetMapping
